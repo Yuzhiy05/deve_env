@@ -1,0 +1,103 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "cmake-build",
+            "command": "cmake",
+            "args": [
+                "-Bbuild",
+                "-DCMAKE_EXPORT_COMPILE_COMMANDS=1",
+                "--preset",
+                "clang-debug",
+                "."
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "cmake构建",
+            "problemMatcher": [],
+            "presentation": 
+            {
+                "revealProblems": "never",
+                "showReuseMessage": false,
+                "panel": "shared",
+            }
+        },
+        {
+            "type": "shell",
+            "label": "ninja-make",
+            "command": "ninja ",
+            "args": [
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            // "problemMatcher": {
+            //     "owner": "cpp",
+            //     "fileLocation": ["relative", "${workspaceFolder}"],
+            //     "pattern": {
+            //     "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+            //     "file": 1,
+            //     "line": 2,
+            //     "column": 3,
+            //     "severity": 4,
+            //     "message": 5
+            //     },
+            // },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "ninja编译",
+            "presentation": 
+            {
+                "revealProblems": "never",
+                "showReuseMessage": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "执行",
+            "type": "shell",
+            "command": "./hello",
+            "options": {
+                "cwd": "${workspaceFolder}/out/"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "执行exe",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "cmake-build",
+                "ninja-make"
+            ],
+            "presentation": 
+            {
+                "revealProblems": "never",
+                "showReuseMessage": false,
+                "panel": "shared",
+            }
+        },
+        {
+            "label": "test",
+            "type": "shell",
+            "command":"dir",
+            "args": [
+                {
+                "value":"111 111",
+                "quoting":"escape"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+
+[submodule "spdlog"]
+	path = spdlog
+	url = git@github.com:gabime/spdlog.git
+	branch = master

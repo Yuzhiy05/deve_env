@@ -1,0 +1,35 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "clang",
+            "displayName": "Clang 20.0.0git-msvc",
+            "description": "使用编译器: C = D:\\workfile\\compiler\\clang\\llvm\\bin\\clang.exe, CXX = D:\\workfile\\compiler\\clang\\llvm\\bin\\clang++.exe",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "hidden": false,
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "D:/workfile/compiler/clang/llvm/bin/clang.exe",
+                "CMAKE_CXX_COMPILER": "D:/workfile/compiler/clang/llvm/bin/clang++.exe",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_CXX_FLAGS": "--target=x86_64-windows-msvc --sysroot=D:\\workfile\\compiler\\windows-msvc-sysroot  -fuse-ld=lld  -Wno-unused-command-line-argument -fcolor-diagnostics -stdlib=libc++",
+                "CMAKE_C_FLAGS": "--target=x86_64-windows-msvc --sysroot=D:\\workfile\\compiler\\windows-msvc-sysroot -fuse-ld=lld -fcolor-diagnostics"
+            }
+        },
+        {
+            "name": "clang-debug",
+            "displayName": "Clang 20.0.0git-gnu",
+            "hidden": false,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_C_COMPILER": "D:\\workfile\\compiler\\clang\\llvm\\bin\\clang.exe",
+                "CMAKE_CXX_COMPILER": "D:\\workfile\\compiler\\clang\\llvm\\bin\\clang++.exe",
+                "CMAKE_CXX_FLAGS": "--target=x86_64-windows-gnu --sysroot=D:\\workfile\\compiler\\clang\\x86_64-windows-gnu -fuse-ld=lld  -rtlib=compiler-rt -unwindlib=libunwind  -lc++abi -lunwind -lntdll -Wno-unused-command-line-argument  -fcolor-diagnostics -stdlib=libc++",
+                "CMAKE_C_FLAGS": "--target=x86_64-windows-gnu --sysroot=D:\\workfile\\compiler\\clang\\x86_64-windows-gnu -fuse-ld=lld -rtlib=compiler-rt -unwindlib=libunwind  -lc++abi -lunwind -lntdll -Wno-unused-command-line-argument -fcolor-diagnostics "
+            }
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"clangd.path": "D:/workfile/compiler/clang/llvm/bin/clangd.exe",
+		"clangd.fallbackFlags": [
+			"-std=c++23",
+			"-stdlib=libc++",
+			"-ID:/workfile/compiler/clang/x86_64-windows-gnu/include/c++/v1"
+		],
+		"clangd.arguments": [
+			"--query-driver=D:/workfile/compiler/clang/llvm/bin/clang++*"
+		],
+		"terminal.integrated.minimumContrastRatio": 1,
+		"typescript.tsc.autoDetect": "off",
+		"grunt.autoDetect": "off",
+		"jake.autoDetect": "off",
+		"gulp.autoDetect": "off",
+		"npm.autoDetect": "off"	
+	}
+}
