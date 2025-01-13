@@ -2,7 +2,7 @@
     "version": 8,
     "configurePresets": [
         {
-            "name": "clang",
+            "name": "clang-msvc",
             "displayName": "Clang 20.0.0git-msvc",
             "description": "使用编译器: C = D:\\workfile\\compiler\\clang\\llvm\\bin\\clang.exe, CXX = D:\\workfile\\compiler\\clang\\llvm\\bin\\clang++.exe",
             "binaryDir": "${sourceDir}/build/${presetName}",
@@ -18,7 +18,7 @@
             }
         },
         {
-            "name": "clang-debug",
+            "name": "clang-gnu",
             "displayName": "Clang 20.0.0git-gnu",
             "hidden": false,
             "generator": "Ninja",
@@ -29,6 +29,22 @@
                 "CMAKE_CXX_COMPILER": "D:\\workfile\\compiler\\clang\\llvm\\bin\\clang++.exe",
                 "CMAKE_CXX_FLAGS": "--target=x86_64-windows-gnu --sysroot=D:\\workfile\\compiler\\clang\\x86_64-windows-gnu -fuse-ld=lld  -rtlib=compiler-rt -unwindlib=libunwind  -lc++abi -lunwind -lntdll -Wno-unused-command-line-argument  -fcolor-diagnostics -stdlib=libc++",
                 "CMAKE_C_FLAGS": "--target=x86_64-windows-gnu --sysroot=D:\\workfile\\compiler\\clang\\x86_64-windows-gnu -fuse-ld=lld -rtlib=compiler-rt -unwindlib=libunwind  -lc++abi -lunwind -lntdll -Wno-unused-command-line-argument -fcolor-diagnostics "
+            }
+        },
+        {
+            "name": "clang",
+            "displayName": "Clang 20.0.0git-msvc with clangd",
+            "inherits": "clang-msvc",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "1"
+            }
+        },
+        {
+            "name": "clang-debug",
+            "displayName": "Clang 20.0.0git-gnu with clangd",
+            "inherits": "clang-gnu",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "1"
             }
         }
     ]

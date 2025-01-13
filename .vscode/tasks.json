@@ -5,7 +5,7 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "cmake-build",
+            "label": "cmake-create",
             "command": "cmake",
             "args": [
                 "-Bbuild",
@@ -78,7 +78,7 @@
             "detail": "执行exe",
             "dependsOrder": "sequence",
             "dependsOn": [
-                "cmake-build",
+                "cmake-create",
                 "ninja-make"
             ],
             "presentation": 
@@ -89,15 +89,43 @@
             }
         },
         {
-            "label": "test",
             "type": "shell",
-            "command":"dir",
+            "label": "cmake-build",
+            "command": "cmake",
             "args": [
-                {
-                "value":"111 111",
-                "quoting":"escape"
-                }
-            ]
+                "--build",
+                "${workspaceFolder}/build/${input:buildPreset}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "cmake构建",
+            "problemMatcher": [],
+            "presentation": 
+            {
+                "revealProblems": "never",
+                "showReuseMessage": false,
+                "panel": "shared",
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "buildPreset",
+            "type": "pickString",
+            "description": "选择构建预设",
+            "options": [
+                "clang",
+                "clang-msvc",
+                "clang-debug",
+                "clang-gnu"
+            ],
+            "default": "clang"
         }
     ]
+
 }
